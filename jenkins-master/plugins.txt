@@ -14,7 +14,7 @@ durable-task 1.12
 email-ext 2.52
 external-monitor-job 1.6
 git 3.0.0
-git-client 2.10.0
+git-client 2.1.0
 git-server 1.7
 github 1.22.4
 github-api 1.79

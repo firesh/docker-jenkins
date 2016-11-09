@@ -40,13 +40,13 @@ pipeline-stage-step 2.2
 pipeline-stage-view 2.0
 plain-credentials 1.3
 scm-api 1.3
-script-security 1.22
+script-security 1.24
 scriptler 2.9
 ssh-credentials 1.12
 ssh-slaves 1.11
 structs 1.5
 timestamper 1.8.5
-token-macro 1.12.1
+token-macro 2.0
 windows-slaves 1.2
 workflow-aggregator 2.3
 workflow-api 2.6
@@ -57,7 +57,7 @@ workflow-durable-task-step 2.4
 workflow-job 2.6
 workflow-multibranch 2.9
 workflow-scm-step 2.2
-workflow-step-api 2.3
-workflow-support 2.4
+workflow-step-api 2.5
+workflow-support 2.10
 ws-cleanup 0.32
 yet-another-docker-plugin 0.1.0-rc29

@@ -21,7 +21,7 @@ RUN chmod +x /bin/tini
 # SET Jenkins Environment Variables
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
-ENV JENKINS_VERSION 2.19
+ENV JENKINS_VERSION 2.19.2
 #ENV JENKINS_SHA 5b89b6967e7af8119c52c7e86223b47665417a22
 ENV JENKINS_UC https://updates.jenkins-ci.org
 ENV JENKINS_UC_DOWNLOAD https://mirrors.tuna.tsinghua.edu.cn/jenkins
@@ -44,10 +44,10 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 # Install Jenkins
 #RUN curl -fL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war -o /usr/share/jenkins/jenkins.war \
 #  && echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
-RUN curl -fL https://mirrors.tuna.tsinghua.edu.cn/jenkins/war/${JENKINS_VERSION}/jenkins.war -o /usr/share/jenkins/jenkins.war
+RUN curl -fL https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war -o /usr/share/jenkins/jenkins.war
 
 
-ENV JAVA_OPTS="-Xmx8192m"
+ENV JAVA_OPTS="-Xmx2048m"
 ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log  --webroot=/var/cache/jenkins/war"
 
 # Prep Jenkins Directories

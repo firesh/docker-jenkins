@@ -47,7 +47,7 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 #  && echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
 
 
-ENV JAVA_OPTS="-Xmx8192m"
+ENV JAVA_OPTS="-Xmx2048m"
 ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log  --webroot=/var/cache/jenkins/war"
 
 # Prep Jenkins Directories

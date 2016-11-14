@@ -39,7 +39,7 @@ RUN set -x \
 	&& docker -v
 
 #Install jenkins-slave
-ARG VERSION=2.19.2
+ARG VERSION=2.62.3
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
   && chmod 755 /usr/share/jenkins \

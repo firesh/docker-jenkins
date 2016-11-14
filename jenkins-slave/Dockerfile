@@ -39,13 +39,28 @@ RUN set -x \
 	&& docker -v
 
 #Install jenkins-slave
-ARG VERSION=2.62.3
+WORKDIR /ROOT
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+ DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&\
+ DEBIAN_FRONTEND=noninteractive apt-get -y autoremove && \
+ DEBIAN_FRONTEND=noninteractive apt-get clean
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+RUN mkdir /var/run/sshd
 
-RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
-  && chmod 755 /usr/share/jenkins \
-  && chmod 644 /usr/share/jenkins/slave.jar
+COPY setup-sshd /usr/local/bin/setup-sshd
+
+EXPOSE 22
+
+ENTRYPOINT ["setup-sshd"]
 
 
-COPY jenkins-slave /usr/local/bin/jenkins-slave
-
-ENTRYPOINT ["jenkins-slave"]
+# ARG JENKINS_SLAVE_VERSION=2.62.3
+#
+# RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
+#   && chmod 755 /usr/share/jenkins \
+#   && chmod 644 /usr/share/jenkins/slave.jar
+#
+#
+# COPY jenkins-slave /usr/local/bin/jenkins-slave
+#
+# ENTRYPOINT ["jenkins-slave"]

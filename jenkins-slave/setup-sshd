@@ -30,7 +30,7 @@
 write_key() {
 	mkdir -p /root/.ssh
 	echo "$1" > /root/.ssh/authorized_keys
-	chown -Rf jenkins:jenkins /root/.ssh
+	chown -Rf root:root /root/.ssh
 	chmod 0700 -R /root/.ssh
 }
 
